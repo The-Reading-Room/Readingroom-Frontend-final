@@ -1,5 +1,5 @@
 "use client"
-
+import Link from "next/link"
 import { Sidebar } from "@/components/sidebar"
 import { Button } from "@/components/ui/button"
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card"
@@ -7,7 +7,15 @@ import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs"
 import { Badge } from "@/components/ui/badge"
 import { PostCard } from "@/components/post-card"
 import { ReviewCard } from "@/components/review-card"
-import { Star, Bookmark, Share, MessageCircle, Users, Calendar, Globe } from "lucide-react"
+import {
+  Star,
+  Bookmark,
+  Share,
+  MessageCircle,
+  Users,
+  Calendar,
+  Globe,
+} from "lucide-react"
 import Image from "next/image"
 import { useState } from "react"
 
@@ -121,8 +129,12 @@ export default function BookPage() {
               {/* Book Info */}
               <div className="flex-1 space-y-6">
                 <div>
-                  <h1 className="text-3xl font-bold text-purple-800 mb-2">{bookData.title}</h1>
-                  <p className="text-xl text-purple-600 mb-4">by {bookData.author}</p>
+                  <h1 className="text-3xl font-bold text-purple-800 mb-2">
+                    {bookData.title}
+                  </h1>
+                  <p className="text-xl text-purple-600 mb-4">
+                    by {bookData.author}
+                  </p>
 
                   <div className="flex items-center space-x-6 mb-4">
                     <div className="flex items-center space-x-2">
@@ -130,12 +142,20 @@ export default function BookPage() {
                         {[1, 2, 3, 4, 5].map((star) => (
                           <Star
                             key={star}
-                            className={`h-5 w-5 ${star <= Math.floor(bookData.rating) ? "fill-yellow-400 text-yellow-400" : "text-gray-300"}`}
+                            className={`h-5 w-5 ${
+                              star <= Math.floor(bookData.rating)
+                                ? "fill-yellow-400 text-yellow-400"
+                                : "text-gray-300"
+                            }`}
                           />
                         ))}
                       </div>
-                      <span className="font-semibold text-purple-800">{bookData.rating}</span>
-                      <span className="text-purple-600">({bookData.reviewCount} reviews)</span>
+                      <span className="font-semibold text-purple-800">
+                        {bookData.rating}
+                      </span>
+                      <span className="text-purple-600">
+                        ({bookData.reviewCount} reviews)
+                      </span>
                     </div>
 
                     <div className="flex items-center space-x-2 text-purple-600">
@@ -146,19 +166,27 @@ export default function BookPage() {
 
                   <div className="flex flex-wrap gap-2 mb-4">
                     {bookData.genres.map((genre) => (
-                      <Badge key={genre} variant="outline" className="border-[#D9BDF4] text-purple-700">
+                      <Badge
+                        key={genre}
+                        variant="outline"
+                        className="border-[#D9BDF4] text-purple-700"
+                      >
                         {genre}
                       </Badge>
                     ))}
                   </div>
                 </div>
 
-                <p className="text-purple-800 leading-relaxed">{bookData.description}</p>
+                <p className="text-purple-800 leading-relaxed">
+                  {bookData.description}
+                </p>
 
                 <div className="grid grid-cols-2 md:grid-cols-4 gap-4 text-sm">
                   <div className="flex items-center space-x-2 text-purple-600">
                     <Calendar className="h-4 w-4" />
-                    <span>Published {new Date(bookData.publishedDate).getFullYear()}</span>
+                    <span>
+                      Published {new Date(bookData.publishedDate).getFullYear()}
+                    </span>
                   </div>
                   <div className="flex items-center space-x-2 text-purple-600">
                     <Globe className="h-4 w-4" />
@@ -175,19 +203,35 @@ export default function BookPage() {
                 </div>
 
                 <div className="flex space-x-4">
-                  <Button className="bg-[#D9BDF4] hover:bg-[#C9A9E4] text-purple-900">Write Review</Button>
-                  <Button variant="outline" className="border-[#D9BDF4] text-purple-700">
-                    Create Post
-                  </Button>
+                  <Link href="/create-post">
+                    <Button className="bg-[#D9BDF4] hover:bg-[#C9A9E4] text-purple-900">
+                      Write Review
+                    </Button>
+                  </Link>
+                  <Link href="/create-post">
+                    <Button
+                      variant="outline"
+                      className="border-[#D9BDF4] text-purple-700"
+                    >
+                      Create Post
+                    </Button>
+                  </Link>
                   <Button
                     variant="outline"
                     className="border-[#D9BDF4] text-purple-700"
                     onClick={() => setIsBookmarked(!isBookmarked)}
                   >
-                    <Bookmark className={`h-4 w-4 mr-2 ${isBookmarked ? "fill-current" : ""}`} />
+                    <Bookmark
+                      className={`h-4 w-4 mr-2 ${
+                        isBookmarked ? "fill-current" : ""
+                      }`}
+                    />
                     {isBookmarked ? "Saved" : "Save"}
                   </Button>
-                  <Button variant="outline" className="border-[#D9BDF4] text-purple-700">
+                  <Button
+                    variant="outline"
+                    className="border-[#D9BDF4] text-purple-700"
+                  >
                     <Share className="h-4 w-4 mr-2" />
                     Share
                   </Button>
@@ -198,7 +242,11 @@ export default function BookPage() {
         </Card>
 
         {/* Content Tabs */}
-        <Tabs value={activeTab} onValueChange={setActiveTab} className="space-y-6">
+        <Tabs
+          value={activeTab}
+          onValueChange={setActiveTab}
+          className="space-y-6"
+        >
           <TabsList className="grid w-full grid-cols-3 bg-white/70 border border-[#D9BDF4]/20">
             <TabsTrigger
               value="overview"
@@ -206,7 +254,10 @@ export default function BookPage() {
             >
               Overview
             </TabsTrigger>
-            <TabsTrigger value="posts" className="data-[state=active]:bg-[#D9BDF4] data-[state=active]:text-purple-900">
+            <TabsTrigger
+              value="posts"
+              className="data-[state=active]:bg-[#D9BDF4] data-[state=active]:text-purple-900"
+            >
               Posts ({bookData.postCount})
             </TabsTrigger>
             <TabsTrigger
@@ -221,17 +272,28 @@ export default function BookPage() {
             <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
               <Card className="border-[#D9BDF4]/20 bg-white/70 backdrop-blur-sm">
                 <CardHeader>
-                  <CardTitle className="text-purple-800">Recent Activity</CardTitle>
+                  <CardTitle className="text-purple-800">
+                    Recent Activity
+                  </CardTitle>
                 </CardHeader>
                 <CardContent className="space-y-4">
                   {mockPosts.slice(0, 2).map((post, index) => (
-                    <div key={index} className="p-4 rounded-lg bg-[#D9BDF4]/5 border border-[#D9BDF4]/20">
+                    <div
+                      key={index}
+                      className="p-4 rounded-lg bg-[#D9BDF4]/5 border border-[#D9BDF4]/20"
+                    >
                       <div className="flex items-center space-x-2 mb-2">
-                        <span className="font-medium text-sm text-purple-800">{post.user.name}</span>
+                        <span className="font-medium text-sm text-purple-800">
+                          {post.user.name}
+                        </span>
                         <span className="text-purple-600 text-sm">posted</span>
-                        <span className="text-purple-400 text-sm">{post.timestamp}</span>
+                        <span className="text-purple-400 text-sm">
+                          {post.timestamp}
+                        </span>
                       </div>
-                      <p className="text-sm text-purple-800 line-clamp-3">{post.content}</p>
+                      <p className="text-sm text-purple-800 line-clamp-3">
+                        {post.content}
+                      </p>
                     </div>
                   ))}
                 </CardContent>
@@ -243,21 +305,36 @@ export default function BookPage() {
                 </CardHeader>
                 <CardContent className="space-y-4">
                   {mockReviews.slice(0, 2).map((review, index) => (
-                    <div key={index} className="p-4 rounded-lg bg-[#D9BDF4]/5 border border-[#D9BDF4]/20">
+                    <div
+                      key={index}
+                      className="p-4 rounded-lg bg-[#D9BDF4]/5 border border-[#D9BDF4]/20"
+                    >
                       <div className="flex items-center space-x-2 mb-2">
-                        <span className="font-medium text-sm text-purple-800">{review.user.name}</span>
+                        <span className="font-medium text-sm text-purple-800">
+                          {review.user.name}
+                        </span>
                         <div className="flex">
                           {[1, 2, 3, 4, 5].map((star) => (
                             <Star
                               key={star}
-                              className={`h-3 w-3 ${star <= review.rating ? "fill-yellow-400 text-yellow-400" : "text-gray-300"}`}
+                              className={`h-3 w-3 ${
+                                star <= review.rating
+                                  ? "fill-yellow-400 text-yellow-400"
+                                  : "text-gray-300"
+                              }`}
                             />
                           ))}
                         </div>
-                        <span className="text-purple-400 text-sm">{review.timestamp}</span>
+                        <span className="text-purple-400 text-sm">
+                          {review.timestamp}
+                        </span>
                       </div>
-                      <h4 className="font-medium text-sm text-purple-800 mb-1">{review.title}</h4>
-                      <p className="text-sm text-purple-700 line-clamp-2">{review.content}</p>
+                      <h4 className="font-medium text-sm text-purple-800 mb-1">
+                        {review.title}
+                      </h4>
+                      <p className="text-sm text-purple-700 line-clamp-2">
+                        {review.content}
+                      </p>
                     </div>
                   ))}
                 </CardContent>

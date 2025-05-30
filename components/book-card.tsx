@@ -2,6 +2,7 @@ import { Card, CardContent } from "@/components/ui/card"
 import { Button } from "@/components/ui/button"
 import { Star, Users } from "lucide-react"
 import Image from "next/image"
+import Link from "next/link"
 
 interface BookCardProps {
   title: string
@@ -44,10 +45,21 @@ export function BookCard({ title, author, cover, rating, reviewCount, descriptio
             <p className="text-sm text-muted-foreground line-clamp-3">{description}</p>
 
             <div className="flex space-x-2 pt-2">
-              <Button size="sm" variant="outline">
-                View Book
-              </Button>
-              <Button size="sm">Add Review</Button>
+              <Link href={`/books/${title}`}>
+                <Button 
+                  variant="outline" 
+                  className="text-sm px-4 py-2 h-9 border-[#D9BDF4] text-purple-700 hover:bg-[#D9BDF4]/10"
+                >
+                  View Book
+                </Button>
+              </Link>
+              <Link href={'/create-post'}>
+                <Button 
+                  className="text-sm px-4 py-2 h-9 bg-[#D9BDF4] hover:bg-[#C9A9E4] text-purple-900"
+                >
+                  Add Review
+                </Button>
+              </Link>
             </div>
           </div>
         </div>
