@@ -32,13 +32,13 @@ export function MainContent() {
             book={{
               title: "The Seven Husbands of Evelyn Hugo",
               author: "Taylor Jenkins Reid",
-              cover: "/placeholder.svg?height=120&width=80",
+              cover: "http://books.google.com/books/content?id=njVpDQAAQBAJ&printsec=frontcover&img=1&zoom=5&edge=curl&source=gbs_api",
             }}
             content="Just finished this masterpiece! The way Taylor Jenkins Reid weaves together love, ambition, and sacrifice is absolutely brilliant. Evelyn's story had me completely captivated from start to finish. 📚✨"
             timestamp="2 hours ago"
             likes={24}
             comments={8}
-            image="/placeholder.svg?height=300&width=500"
+            image="https://bookcoffeehappy.com/wp-content/uploads/2020/03/img_3592.jpg"
           />
 
           <ReviewCard
@@ -50,7 +50,7 @@ export function MainContent() {
             book={{
               title: "Project Hail Mary",
               author: "Andy Weir",
-              cover: "/placeholder.svg?height=120&width=80",
+              cover: "http://books.google.com/books/content?id=iEiHEAAAQBAJ&printsec=frontcover&img=1&zoom=5&source=gbs_api",
             }}
             rating={5}
             title="A Scientific Adventure That Will Blow Your Mind"
@@ -69,7 +69,7 @@ export function MainContent() {
             book={{
               title: "Klara and the Sun",
               author: "Kazuo Ishiguro",
-              cover: "/placeholder.svg?height=120&width=80",
+              cover: "http://books.google.com/books/content?id=SbjrDwAAQBAJ&printsec=frontcover&img=1&zoom=5&source=gbs_api",
             }}
             content="Currently reading this and Ishiguro's prose is just... *chef's kiss* 👌 The way he writes from Klara's perspective is so unique and touching. Anyone else reading this? Would love to discuss!"
             timestamp="1 day ago"
@@ -86,7 +86,7 @@ export function MainContent() {
             book={{
               title: "The Midnight Library",
               author: "Matt Haig",
-              cover: "/placeholder.svg?height=120&width=80",
+              cover: "http://books.google.com/books/content?id=ho-rEAAAQBAJ&printsec=frontcover&img=1&zoom=5&source=gbs_api",
             }}
             rating={4}
             title="A Beautiful Exploration of Life's Possibilities"
