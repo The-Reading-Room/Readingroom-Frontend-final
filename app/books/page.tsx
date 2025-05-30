@@ -21,7 +21,8 @@ const allBooks = [
     cover: "/placeholder.svg?height=200&width=140",
     rating: 4.7,
     reviewCount: 892,
-    description: "A lone astronaut must save humanity in this thrilling science fiction adventure.",
+    description:
+      "A lone astronaut must save humanity in this thrilling science fiction adventure.",
   },
   {
     title: "Klara and the Sun",
@@ -29,7 +30,8 @@ const allBooks = [
     cover: "/placeholder.svg?height=200&width=140",
     rating: 4.3,
     reviewCount: 567,
-    description: "A haunting story told from the perspective of an artificial friend.",
+    description:
+      "A haunting story told from the perspective of an artificial friend.",
   },
 ]
 
@@ -44,7 +46,9 @@ export default function BooksPage() {
             <BookOpen className="h-8 w-8 mr-3 text-[#D9BDF4]" />
             All Books
           </h1>
-          <p className="text-purple-600">Browse our complete collection of books</p>
+          <p className="text-purple-600">
+            Browse our complete collection of books
+          </p>
         </div>
 
         <Card className="border-[#D9BDF4]/20 bg-white/70 backdrop-blur-sm">

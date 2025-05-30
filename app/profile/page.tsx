@@ -9,17 +9,27 @@ import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar"
 import { Badge } from "@/components/ui/badge"
 import { PostCard } from "@/components/post-card"
 import { ReviewCard } from "@/components/review-card"
-import { MapPin, Calendar, LinkIcon, Users, BookOpen, Star, MessageCircle, Edit, Camera } from "lucide-react"
+import {
+  MapPin,
+  Calendar,
+  LinkIcon,
+  Users,
+  BookOpen,
+  Star,
+  MessageCircle,
+  Edit,
+  Camera,
+} from "lucide-react"
 import Image from "next/image"
 
 const userData = {
-  name: "John Doe",
-  username: "johndoe",
-  bio: "Passionate reader, coffee enthusiast, and lover of literary fiction. Always looking for my next great read! 📚☕",
+  name: "ripyanka",
+  username: "pri_reads",
+  bio: "Lost in books since 2003 • Currently obsessed with gothic literature 📚☕",
   location: "San Francisco, CA",
-  joinDate: "March 2023",
-  website: "johndoe.blog",
-  avatar: "/placeholder-user.jpg",
+  joinDate: "March 2019",
+  website: "pri.blog",
+  avatar: "https://i.pinimg.com/736x/68/02/ab/6802ab868e690972f2134e4f569fc143.jpg",
   coverImage: "/placeholder.svg?height=200&width=800",
   stats: {
     followers: 156,
@@ -125,8 +135,13 @@ export default function ProfilePage() {
 
       <div className="flex-1 max-w-4xl mx-auto">
         {/* Cover Image */}
-        <div className="relative h-48 bg-gradient-to-r from-[#D9BDF4] to-purple-200">
-          <Image src={userData.coverImage || "/placeholder.svg"} alt="Cover" fill className="object-cover opacity-50" />
+        {/* <div className="relative h-48 bg-gradient-to-r from-[#D9BDF4] to-purple-200">
+          <Image
+            src={userData.coverImage || "/placeholder.svg"}
+            alt="Cover"
+            fill
+            className="object-cover opacity-50"
+          />
           <Button
             variant="outline"
             size="icon"
@@ -134,38 +149,45 @@ export default function ProfilePage() {
           >
             <Camera className="h-4 w-4" />
           </Button>
-        </div>
+        </div> */}
 
         {/* Profile Header */}
-        <div className="relative px-6 pb-6">
+        <div className="relative pt-16 px-6 pb-6">
           <div className="flex flex-col sm:flex-row sm:items-end sm:space-x-6">
-            {/* Avatar */}
-            <div className="relative -mt-16 mb-4 sm:mb-0">
-              <Avatar className="h-32 w-32 border-4 border-white shadow-lg">
-                <AvatarImage src={userData.avatar || "/placeholder.svg"} alt={userData.name} />
-                <AvatarFallback className="text-2xl bg-[#D9BDF4] text-purple-800">
-                  {userData.name
-                    .split(" ")
-                    .map((n) => n[0])
-                    .join("")}
-                </AvatarFallback>
-              </Avatar>
-              <Button
-                variant="outline"
-                size="icon"
-                className="absolute bottom-0 right-0 h-8 w-8 bg-white border-white hover:bg-gray-50"
-              >
-                <Camera className="h-4 w-4" />
-              </Button>
-            </div>
-
             {/* Profile Info */}
             <div className="flex-1">
               <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between">
-                <div>
-                  <h1 className="text-2xl font-bold text-purple-800">{userData.name}</h1>
-                  <p className="text-purple-600">@{userData.username}</p>
+                {/* Avatar */}
+                <div className="flex justify-between">
+                  <div className="relative justify-between mb-4 sm:mb-0">
+                    <Avatar className="h-32 w-32 border-4 border-white shadow-lg">
+                      <AvatarImage
+                        src={userData.avatar || "/placeholder.svg"}
+                        alt={userData.name}
+                      />
+                      <AvatarFallback className="text-2xl bg-[#D9BDF4] text-purple-800">
+                        {userData.name
+                          .split(" ")
+                          .map((n) => n[0])
+                          .join("")}
+                      </AvatarFallback>
+                    </Avatar>
+                    <Button
+                      variant="outline"
+                      size="icon"
+                      className="absolute bottom-0 right-0 h-8 w-8 bg-white border-white hover:bg-gray-50"
+                    >
+                      <Camera className="h-4 w-4" />
+                    </Button>
+                  </div>
+                  <div className="mt-10 ml-10">
+                    <h1 className="text-2xl font-bold text-purple-800">
+                      {userData.name}
+                    </h1>
+                    <p className="text-purple-600">@{userData.username}</p>
+                  </div>
                 </div>
+
                 <div className="flex space-x-2 mt-4 sm:mt-0">
                   <Button
                     variant="outline"
@@ -182,7 +204,9 @@ export default function ProfilePage() {
                 </div>
               </div>
 
-              <p className="mt-4 text-purple-800 leading-relaxed">{userData.bio}</p>
+              <p className="mt-4 text-purple-800 leading-relaxed">
+                {userData.bio}
+              </p>
 
               <div className="flex flex-wrap items-center gap-4 mt-4 text-sm text-purple-600">
                 <div className="flex items-center">
@@ -195,7 +219,10 @@ export default function ProfilePage() {
                 </div>
                 <div className="flex items-center">
                   <LinkIcon className="h-4 w-4 mr-1" />
-                  <a href={`https://${userData.website}`} className="hover:underline text-purple-700">
+                  <a
+                    href={`https://${userData.website}`}
+                    className="hover:underline text-purple-700"
+                  >
                     {userData.website}
                   </a>
                 </div>
@@ -204,19 +231,27 @@ export default function ProfilePage() {
               {/* Stats */}
               <div className="flex space-x-6 mt-4">
                 <div className="text-center">
-                  <div className="font-bold text-purple-800">{userData.stats.followers}</div>
+                  <div className="font-bold text-purple-800">
+                    {userData.stats.followers}
+                  </div>
                   <div className="text-sm text-purple-600">Followers</div>
                 </div>
                 <div className="text-center">
-                  <div className="font-bold text-purple-800">{userData.stats.following}</div>
+                  <div className="font-bold text-purple-800">
+                    {userData.stats.following}
+                  </div>
                   <div className="text-sm text-purple-600">Following</div>
                 </div>
                 <div className="text-center">
-                  <div className="font-bold text-purple-800">{userData.stats.booksRead}</div>
+                  <div className="font-bold text-purple-800">
+                    {userData.stats.booksRead}
+                  </div>
                   <div className="text-sm text-purple-600">Books Read</div>
                 </div>
                 <div className="text-center">
-                  <div className="font-bold text-purple-800">{userData.stats.reviewsWritten}</div>
+                  <div className="font-bold text-purple-800">
+                    {userData.stats.reviewsWritten}
+                  </div>
                   <div className="text-sm text-purple-600">Reviews</div>
                 </div>
               </div>
@@ -229,7 +264,11 @@ export default function ProfilePage() {
           <div className="grid grid-cols-1 lg:grid-cols-3 gap-6">
             {/* Main Content */}
             <div className="lg:col-span-2">
-              <Tabs value={activeTab} onValueChange={setActiveTab} className="space-y-6">
+              <Tabs
+                value={activeTab}
+                onValueChange={setActiveTab}
+                className="space-y-6"
+              >
                 <TabsList className="grid w-full grid-cols-3 bg-white/70 border border-[#D9BDF4]/20">
                   <TabsTrigger
                     value="posts"
@@ -266,7 +305,9 @@ export default function ProfilePage() {
                 <TabsContent value="activity" className="space-y-6">
                   <Card className="border-[#D9BDF4]/20 bg-white/70 backdrop-blur-sm">
                     <CardHeader>
-                      <CardTitle className="text-purple-800">Recent Activity</CardTitle>
+                      <CardTitle className="text-purple-800">
+                        Recent Activity
+                      </CardTitle>
                     </CardHeader>
                     <CardContent className="space-y-4">
                       <div className="flex items-center space-x-3 p-3 rounded-lg bg-[#D9BDF4]/5">
@@ -282,7 +323,8 @@ export default function ProfilePage() {
                         <MessageCircle className="h-5 w-5 text-blue-500" />
                         <div>
                           <p className="text-sm text-purple-800">
-                            Commented on <strong>The Seven Husbands of Evelyn Hugo</strong>
+                            Commented on{" "}
+                            <strong>The Seven Husbands of Evelyn Hugo</strong>
                           </p>
                           <p className="text-xs text-purple-600">1 day ago</p>
                         </div>
@@ -324,8 +366,12 @@ export default function ProfilePage() {
                           className="rounded-md"
                         />
                         <div className="flex-1 min-w-0">
-                          <p className="font-medium text-sm text-purple-800 line-clamp-1">{book.title}</p>
-                          <p className="text-xs text-purple-600 line-clamp-1">{book.author}</p>
+                          <p className="font-medium text-sm text-purple-800 line-clamp-1">
+                            {book.title}
+                          </p>
+                          <p className="text-xs text-purple-600 line-clamp-1">
+                            {book.author}
+                          </p>
                         </div>
                       </div>
                       <div className="space-y-1">
@@ -348,12 +394,17 @@ export default function ProfilePage() {
               {/* Reading Goal */}
               <Card className="border-[#D9BDF4]/20 bg-gradient-to-br from-[#D9BDF4]/10 to-purple-100/30">
                 <CardHeader>
-                  <CardTitle className="text-purple-800">2024 Reading Goal</CardTitle>
+                  <CardTitle className="text-purple-800">
+                    2024 Reading Goal
+                  </CardTitle>
                 </CardHeader>
                 <CardContent>
                   <div className="text-center space-y-4">
                     <div className="relative w-24 h-24 mx-auto">
-                      <svg className="w-24 h-24 transform -rotate-90" viewBox="0 0 36 36">
+                      <svg
+                        className="w-24 h-24 transform -rotate-90"
+                        viewBox="0 0 36 36"
+                      >
                         <path
                           className="text-purple-100"
                           stroke="currentColor"
@@ -372,15 +423,23 @@ export default function ProfilePage() {
                         />
                       </svg>
                       <div className="absolute inset-0 flex items-center justify-center">
-                        <span className="text-lg font-bold text-purple-800">{readingGoals.percentage}%</span>
+                        <span className="text-lg font-bold text-purple-800">
+                          {readingGoals.percentage}%
+                        </span>
                       </div>
                     </div>
                     <div>
                       <p className="text-sm text-purple-700">
-                        <span className="font-bold">{readingGoals.current}</span> of{" "}
-                        <span className="font-bold">{readingGoals.yearly}</span> books
+                        <span className="font-bold">
+                          {readingGoals.current}
+                        </span>{" "}
+                        of{" "}
+                        <span className="font-bold">{readingGoals.yearly}</span>{" "}
+                        books
                       </p>
-                      <p className="text-xs text-purple-600 mt-1">You're doing great! Keep it up! 📚</p>
+                      <p className="text-xs text-purple-600 mt-1">
+                        You're doing great! Keep it up! 📚
+                      </p>
                     </div>
                   </div>
                 </CardContent>
@@ -389,12 +448,18 @@ export default function ProfilePage() {
               {/* Favorite Genres */}
               <Card className="border-[#D9BDF4]/20 bg-white/70 backdrop-blur-sm">
                 <CardHeader>
-                  <CardTitle className="text-purple-800">Favorite Genres</CardTitle>
+                  <CardTitle className="text-purple-800">
+                    Favorite Genres
+                  </CardTitle>
                 </CardHeader>
                 <CardContent>
                   <div className="flex flex-wrap gap-2">
                     {userData.favoriteGenres.map((genre) => (
-                      <Badge key={genre} variant="outline" className="border-[#D9BDF4] text-purple-700 bg-[#D9BDF4]/10">
+                      <Badge
+                        key={genre}
+                        variant="outline"
+                        className="border-[#D9BDF4] text-purple-700 bg-[#D9BDF4]/10"
+                      >
                         {genre}
                       </Badge>
                     ))}

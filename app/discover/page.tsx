@@ -9,6 +9,7 @@ import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs"
 import { Badge } from "@/components/ui/badge"
 import { BookCard } from "@/components/book-card"
 import { Search, Filter, Star, TrendingUp, Clock, Heart } from "lucide-react"
+import Link from "next/link"
 
 const genres = [
   "Fiction",
@@ -266,7 +267,9 @@ export default function DiscoverPage() {
                       className="w-12 h-18 object-cover rounded-md"
                     />
                     <div className="flex-1 min-w-0">
-                      <p className="font-medium text-sm text-purple-800 line-clamp-1">{book.title}</p>
+                      <Link href={`/books/${book.title}`}>
+                        <button className="font-medium text-sm text-purple-800 line-clamp-1">{book.title}</button>
+                      </Link>
                       <p className="text-xs text-purple-600 line-clamp-1">{book.author}</p>
                       <div className="flex items-center mt-1">
                         <Star className="h-3 w-3 fill-yellow-400 text-yellow-400" />
