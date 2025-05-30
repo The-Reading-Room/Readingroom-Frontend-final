@@ -24,19 +24,19 @@ export default function CreatePostPage() {
       id: 1,
       title: "The Seven Husbands of Evelyn Hugo",
       author: "Taylor Jenkins Reid",
-      cover: "/placeholder.svg?height=120&width=80",
+      cover: "http://books.google.com/books/content?id=njVpDQAAQBAJ&printsec=frontcover&img=1&zoom=5&edge=curl&source=gbs_api",
     },
     {
       id: 2,
       title: "Project Hail Mary",
       author: "Andy Weir",
-      cover: "/placeholder.svg?height=120&width=80",
+      cover: "http://books.google.com/books/content?id=iEiHEAAAQBAJ&printsec=frontcover&img=1&zoom=5&source=gbs_api",
     },
     {
       id: 3,
       title: "Klara and the Sun",
       author: "Kazuo Ishiguro",
-      cover: "/placeholder.svg?height=120&width=80",
+      cover: "http://books.google.com/books/content?id=SbjrDwAAQBAJ&printsec=frontcover&img=1&zoom=5&source=gbs_api",
     },
   ]
 
