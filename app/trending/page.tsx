@@ -9,7 +9,7 @@ const trendingBooks = [
   {
     title: "Fourth Wing",
     author: "Rebecca Yarros",
-    cover: "/placeholder.svg?height=200&width=140",
+    cover: "http://books.google.com/books/content?id=EP-gEAAAQBAJ&printsec=frontcover&img=1&zoom=5&edge=curl&source=gbs_api",
     rating: 4.8,
     reviewCount: 2156,
     description:
@@ -18,7 +18,7 @@ const trendingBooks = [
   {
     title: "Tomorrow, and Tomorrow, and Tomorrow",
     author: "Gabrielle Zevin",
-    cover: "/placeholder.svg?height=200&width=140",
+    cover: "http://books.google.com/books/content?id=uW_8EAAAQBAJ&printsec=frontcover&img=1&zoom=5&edge=curl&source=gbs_api",
     rating: 4.6,
     reviewCount: 1432,
     description:
@@ -27,7 +27,7 @@ const trendingBooks = [
   {
     title: "The Seven Husbands of Evelyn Hugo",
     author: "Taylor Jenkins Reid",
-    cover: "/placeholder.svg?height=200&width=140",
+    cover: "http://books.google.com/books/content?id=njVpDQAAQBAJ&printsec=frontcover&img=1&zoom=5&edge=curl&source=gbs_api",
     rating: 4.8,
     reviewCount: 1234,
     description:
@@ -36,7 +36,7 @@ const trendingBooks = [
   {
     title: "Project Hail Mary",
     author: "Andy Weir",
-    cover: "/placeholder.svg?height=200&width=140",
+    cover: "http://books.google.com/books/content?id=iEiHEAAAQBAJ&printsec=frontcover&img=1&zoom=5&source=gbs_api",
     rating: 4.7,
     reviewCount: 892,
     description:
