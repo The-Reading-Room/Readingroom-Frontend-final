@@ -26,8 +26,8 @@ const userData = {
   name: "ripyanka",
   username: "pri_reads",
   bio: "Lost in books since 2003 • Currently obsessed with gothic literature 📚☕",
-  location: "San Francisco, CA",
-  joinDate: "March 2019",
+  location: "Ghaziabad, India",
+  joinDate: "March 2025",
   website: "pri.blog",
   avatar: "https://i.pinimg.com/736x/68/02/ab/6802ab868e690972f2134e4f569fc143.jpg",
   coverImage: "/placeholder.svg?height=200&width=800",
@@ -47,21 +47,21 @@ const userPosts = [
     book: {
       title: "The Seven Husbands of Evelyn Hugo",
       author: "Taylor Jenkins Reid",
-      cover: "/placeholder.svg?height=120&width=80",
+      cover: "http://books.google.com/books/content?id=njVpDQAAQBAJ&printsec=frontcover&img=1&zoom=5&edge=curl&source=gbs_api",
     },
     content:
       "Just finished this masterpiece! The way Taylor Jenkins Reid weaves together love, ambition, and sacrifice is absolutely brilliant. Evelyn's story had me completely captivated from start to finish. 📚✨",
     timestamp: "2 hours ago",
     likes: 24,
     comments: 8,
-    image: "/placeholder.svg?height=300&width=500",
+    image: "https://bookcoffeehappy.com/wp-content/uploads/2020/03/img_3592.jpg",
   },
   {
     user: userData,
     book: {
       title: "Klara and the Sun",
       author: "Kazuo Ishiguro",
-      cover: "/placeholder.svg?height=120&width=80",
+      cover: "http://books.google.com/books/content?id=SbjrDwAAQBAJ&printsec=frontcover&img=1&zoom=5&source=gbs_api",
     },
     content:
       "Currently reading this and Ishiguro's prose is just... *chef's kiss* 👌 The way he writes from Klara's perspective is so unique and touching. Anyone else reading this? Would love to discuss!",
@@ -77,7 +77,7 @@ const userReviews = [
     book: {
       title: "Project Hail Mary",
       author: "Andy Weir",
-      cover: "/placeholder.svg?height=120&width=80",
+      cover: "http://books.google.com/books/content?id=iEiHEAAAQBAJ&printsec=frontcover&img=1&zoom=5&source=gbs_api",
     },
     rating: 5,
     title: "A Scientific Adventure That Will Blow Your Mind",
@@ -92,7 +92,7 @@ const userReviews = [
     book: {
       title: "The Midnight Library",
       author: "Matt Haig",
-      cover: "/placeholder.svg?height=120&width=80",
+      cover: "http://books.google.com/books/content?id=ho-rEAAAQBAJ&printsec=frontcover&img=1&zoom=5&source=gbs_api",
     },
     rating: 4,
     title: "A Beautiful Exploration of Life's Possibilities",
@@ -108,13 +108,13 @@ const currentlyReading = [
   {
     title: "Klara and the Sun",
     author: "Kazuo Ishiguro",
-    cover: "/placeholder.svg?height=120&width=80",
+    cover: "http://books.google.com/books/content?id=SbjrDwAAQBAJ&printsec=frontcover&img=1&zoom=5&source=gbs_api",
     progress: 65,
   },
   {
     title: "The Atlas Six",
     author: "Olivie Blake",
-    cover: "/placeholder.svg?height=120&width=80",
+    cover: "http://books.google.com/books/content?id=rwtGEAAAQBAJ&printsec=frontcover&img=1&zoom=5&source=gbs_api",
     progress: 23,
   },
 ]
