@@ -24,8 +24,8 @@ const navigation = [
   { name: "Home", icon: Home, href: "/" },
   { name: "Discover", icon: Search, href: "/discover" },
   { name: "Trending", icon: TrendingUp, href: "/trending" },
-  { name: "Books", icon: BookOpen, href: "/books" },
-  { name: "Discussions", icon: MessageCircle, href: "/discussions" },
+  { name: "AI Recommender", icon: BookOpen, href: "http://127.0.0.1:7860" },
+  { name: "Discussions", icon: MessageCircle, href: "http://localhost:5173" },
   { name: "Lists", icon: MessageCircle, href: "/lists" },
 ];
 

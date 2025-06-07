@@ -1,50 +1,128 @@
-"use client"
+"use client";
 
-import { useState } from "react"
-import { Sidebar } from "@/components/sidebar"
-import { Button } from "@/components/ui/button"
-import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card"
-import { Textarea } from "@/components/ui/textarea"
-import { Input } from "@/components/ui/input"
-import { Label } from "@/components/ui/label"
-import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar"
-import { Search, ImageIcon, X, BookOpen, Star } from "lucide-react"
-import Image from "next/image"
+import { useState, useEffect } from "react";
+import { Sidebar } from "@/components/sidebar";
+import { Button } from "@/components/ui/button";
+import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
+import { Textarea } from "@/components/ui/textarea";
+import { Input } from "@/components/ui/input";
+import { Label } from "@/components/ui/label";
+import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
+import { Search, ImageIcon, X, BookOpen, Star } from "lucide-react";
+import Image from "next/image";
+import { useAuth } from "@/lib/auth-context";
+import { useRouter } from "next/navigation";
+import { useToast } from "@/components/ui/use-toast";
 
 export default function CreatePostPage() {
-  const [selectedBook, setSelectedBook] = useState<any>(null)
-  const [postContent, setPostContent] = useState("")
-  const [searchQuery, setSearchQuery] = useState("")
-  const [postType, setPostType] = useState<"post" | "review">("post")
-  const [rating, setRating] = useState(0)
-  const [reviewTitle, setReviewTitle] = useState("")
+  const { user, isLoading: authLoading, isAuthenticated } = useAuth();
+  const router = useRouter();
+  const { toast } = useToast();
+  const [selectedBook, setSelectedBook] = useState<any>(null);
+  const [postContent, setPostContent] = useState("");
+  const [searchQuery, setSearchQuery] = useState("");
+  const [postType, setPostType] = useState<"post" | "review">("post");
+  const [rating, setRating] = useState(0);
+  const [reviewTitle, setReviewTitle] = useState("");
+  const [isLoadingData, setIsLoadingData] = useState(true);
 
   const mockBooks = [
     {
       id: 1,
       title: "The Seven Husbands of Evelyn Hugo",
       author: "Taylor Jenkins Reid",
-      cover: "http://books.google.com/books/content?id=njVpDQAAQBAJ&printsec=frontcover&img=1&zoom=5&edge=curl&source=gbs_api",
+      cover:
+        "http://books.google.com/books/content?id=njVpDQAAQBAJ&printsec=frontcover&img=1&zoom=5&edge=curl&source=gbs_api",
     },
     {
       id: 2,
       title: "Project Hail Mary",
       author: "Andy Weir",
-      cover: "http://books.google.com/books/content?id=iEiHEAAAQBAJ&printsec=frontcover&img=1&zoom=5&source=gbs_api",
+      cover:
+        "http://books.google.com/books/content?id=iEiHEAAAQBAJ&printsec=frontcover&img=1&zoom=5&source=gbs_api",
     },
     {
       id: 3,
       title: "Klara and the Sun",
       author: "Kazuo Ishiguro",
-      cover: "http://books.google.com/books/content?id=SbjrDwAAQBAJ&printsec=frontcover&img=1&zoom=5&source=gbs_api",
+      cover:
+        "http://books.google.com/books/content?id=SbjrDwAAQBAJ&printsec=frontcover&img=1&zoom=5&source=gbs_api",
     },
-  ]
+  ];
 
   const filteredBooks = mockBooks.filter(
     (book) =>
       book.title.toLowerCase().includes(searchQuery.toLowerCase()) ||
-      book.author.toLowerCase().includes(searchQuery.toLowerCase()),
-  )
+      book.author.toLowerCase().includes(searchQuery.toLowerCase())
+  );
+
+  // Simplified auth check useEffect
+  useEffect(() => {
+    console.log("Create Post - Auth state check:", {
+      authLoading,
+      isAuthenticated: isAuthenticated(),
+      hasUser: !!user,
+      userId: user?.id,
+    });
+
+    // If AuthContext is still doing its initial load, wait
+    if (authLoading) {
+      console.log("Create Post - Waiting for AuthContext's initial load");
+      return;
+    }
+
+    // AuthContext's initial loading is complete
+    if (!isAuthenticated()) {
+      console.log(
+        "Create Post - AuthContext reports NOT authenticated after load. Redirecting."
+      );
+      toast({
+        title: "Authentication required",
+        description: "Please log in to create a post",
+        variant: "destructive",
+      });
+      router.push("/auth/login");
+    } else {
+      console.log(
+        "Create Post - AuthContext reports authenticated. Page will render."
+      );
+      setIsLoadingData(false);
+    }
+  }, [authLoading, isAuthenticated, router, toast, user]);
+
+  // Updated loading condition
+  if (authLoading || (!user && !authLoading) || isLoadingData) {
+    console.log("Create Post - Showing loading state:", {
+      authLoading,
+      hasUser: !!user,
+      isLoadingData,
+    });
+    return (
+      <div className="flex min-h-screen bg-gradient-to-br from-purple-50/30 to-[#D9BDF4]/10">
+        <Sidebar />
+        <div className="flex-1 p-6">
+          <div className="animate-pulse space-y-4">
+            <div className="h-32 bg-purple-100 rounded-lg"></div>
+            <div className="h-4 bg-purple-100 rounded w-1/4"></div>
+            <div className="h-4 bg-purple-100 rounded w-1/2"></div>
+          </div>
+        </div>
+      </div>
+    );
+  }
+
+  // Final authentication check
+  if (!isAuthenticated() || !user) {
+    console.log(
+      "Create Post - Render blocked: Not authenticated or no user object",
+      {
+        isAuthenticated: isAuthenticated(),
+        hasUser: !!user,
+        userId: user?.id,
+      }
+    );
+    return null; // Let the useEffect handle the redirect
+  }
 
   return (
     <div className="flex min-h-screen bg-gradient-to-br from-purple-50/30 to-[#D9BDF4]/10">
@@ -52,7 +130,9 @@ export default function CreatePostPage() {
 
       <div className="flex-1 max-w-4xl mx-auto p-6">
         <div className="mb-6">
-          <h1 className="text-3xl font-bold text-purple-800 mb-2">Share Your Thoughts</h1>
+          <h1 className="text-3xl font-bold text-purple-800 mb-2">
+            Share Your Thoughts
+          </h1>
           <p className="text-purple-600">What book is on your mind today?</p>
         </div>
 
@@ -87,8 +167,12 @@ export default function CreatePostPage() {
                       className="rounded-md"
                     />
                     <div className="flex-1">
-                      <h3 className="font-semibold text-purple-800">{selectedBook.title}</h3>
-                      <p className="text-sm text-purple-600">by {selectedBook.author}</p>
+                      <h3 className="font-semibold text-purple-800">
+                        {selectedBook.title}
+                      </h3>
+                      <p className="text-sm text-purple-600">
+                        by {selectedBook.author}
+                      </p>
                     </div>
                     <Button
                       variant="ghost"
@@ -116,8 +200,12 @@ export default function CreatePostPage() {
                         className="rounded-md"
                       />
                       <div>
-                        <p className="font-medium text-sm text-purple-800">{book.title}</p>
-                        <p className="text-xs text-purple-600">by {book.author}</p>
+                        <p className="font-medium text-sm text-purple-800">
+                          {book.title}
+                        </p>
+                        <p className="text-xs text-purple-600">
+                          by {book.author}
+                        </p>
                       </div>
                     </div>
                   ))}
@@ -129,7 +217,9 @@ export default function CreatePostPage() {
           {/* Post Creation */}
           <Card className="border-[#D9BDF4]/20 bg-white/70 backdrop-blur-sm">
             <CardHeader>
-              <CardTitle className="text-purple-800">Create Your Content</CardTitle>
+              <CardTitle className="text-purple-800">
+                Create Your Content
+              </CardTitle>
               <div className="flex space-x-2">
                 <Button
                   variant={postType === "post" ? "default" : "outline"}
@@ -169,7 +259,9 @@ export default function CreatePostPage() {
                         <Star
                           key={star}
                           className={`h-6 w-6 cursor-pointer transition-colors ${
-                            star <= rating ? "fill-yellow-400 text-yellow-400" : "text-gray-300 hover:text-yellow-300"
+                            star <= rating
+                              ? "fill-yellow-400 text-yellow-400"
+                              : "text-gray-300 hover:text-yellow-300"
                           }`}
                           onClick={() => setRating(star)}
                         />
@@ -210,7 +302,10 @@ export default function CreatePostPage() {
               </div>
 
               <div className="flex items-center justify-between pt-4">
-                <Button variant="outline" className="border-[#D9BDF4] text-purple-700">
+                <Button
+                  variant="outline"
+                  className="border-[#D9BDF4] text-purple-700"
+                >
                   <ImageIcon className="h-4 w-4 mr-2" />
                   Add Image
                 </Button>
@@ -236,11 +331,15 @@ export default function CreatePostPage() {
               <div className="flex items-start space-x-3">
                 <Avatar className="h-10 w-10">
                   <AvatarImage src="/placeholder-user.jpg" alt="You" />
-                  <AvatarFallback className="bg-[#D9BDF4] text-purple-800">JD</AvatarFallback>
+                  <AvatarFallback className="bg-[#D9BDF4] text-purple-800">
+                    JD
+                  </AvatarFallback>
                 </Avatar>
                 <div className="flex-1">
                   <div className="flex items-center space-x-2 mb-2">
-                    <span className="font-semibold text-purple-800">John Doe</span>
+                    <span className="font-semibold text-purple-800">
+                      John Doe
+                    </span>
                     <span className="text-purple-600">@johndoe</span>
                     <span className="text-purple-400">·</span>
                     <span className="text-purple-600">now</span>
@@ -253,13 +352,23 @@ export default function CreatePostPage() {
                           {[1, 2, 3, 4, 5].map((star) => (
                             <Star
                               key={star}
-                              className={`h-4 w-4 ${star <= rating ? "fill-yellow-400 text-yellow-400" : "text-gray-300"}`}
+                              className={`h-4 w-4 ${
+                                star <= rating
+                                  ? "fill-yellow-400 text-yellow-400"
+                                  : "text-gray-300"
+                              }`}
                             />
                           ))}
                         </div>
-                        <span className="text-sm font-medium text-purple-800">{rating}/5</span>
+                        <span className="text-sm font-medium text-purple-800">
+                          {rating}/5
+                        </span>
                       </div>
-                      {reviewTitle && <h3 className="font-semibold text-purple-800 mt-1">{reviewTitle}</h3>}
+                      {reviewTitle && (
+                        <h3 className="font-semibold text-purple-800 mt-1">
+                          {reviewTitle}
+                        </h3>
+                      )}
                     </div>
                   )}
 
@@ -272,7 +381,8 @@ export default function CreatePostPage() {
                       className="rounded-sm"
                     />
                     <span className="text-sm text-purple-600">
-                      {postType === "post" ? "posted about" : "reviewed"} {selectedBook.title} by {selectedBook.author}
+                      {postType === "post" ? "posted about" : "reviewed"}{" "}
+                      {selectedBook.title} by {selectedBook.author}
                     </span>
                   </div>
 
@@ -284,5 +394,5 @@ export default function CreatePostPage() {
         )}
       </div>
     </div>
-  )
+  );
 }

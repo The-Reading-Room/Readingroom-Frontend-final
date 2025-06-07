@@ -15,7 +15,9 @@ const authPaths = [
 
 export function middleware(request: NextRequest) {
   const { pathname } = request.nextUrl
-  const isAuthenticated = request.cookies.has('auth-token') // Replace with your actual auth token name
+  // Check for access token in cookies
+  const accessToken = request.cookies.get('access_token')?.value
+  const isAuthenticated = !!accessToken
 
   // Redirect authenticated users away from auth pages
   if (isAuthenticated && authPaths.some(path => pathname.startsWith(path))) {
