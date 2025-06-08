@@ -1,5 +1,6 @@
 "use client"
 import { useState } from "react"
+<<<<<<< HEAD
 import { ArrowLeft, Plus, Trash2, Edit, Eye } from "lucide-react"
 import { Sidebar } from "@/components/sidebar"
 import { Button } from "@/components/ui/button"
@@ -12,10 +13,18 @@ import {
   DialogDescription,
   DialogFooter,
 } from "@/components/ui/dialog"
+=======
+import { ArrowLeft, Plus } from "lucide-react"
+import { Sidebar } from "@/components/sidebar"
+import { Button } from "@/components/ui/button"
+import { Card } from "@/components/ui/card"
+import { Dialog, DialogContent, DialogHeader, DialogTitle, DialogDescription } from "@/components/ui/dialog"
+>>>>>>> 1d6221e113739ba208a1224b35e6e2ad5336774f
 import { Input } from "@/components/ui/input"
 import { Textarea } from "@/components/ui/textarea"
 import { Label } from "@/components/ui/label"
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select"
+<<<<<<< HEAD
 import {
   AlertDialog,
   AlertDialogAction,
@@ -26,6 +35,8 @@ import {
   AlertDialogHeader,
   AlertDialogTitle,
 } from "@/components/ui/alert-dialog"
+=======
+>>>>>>> 1d6221e113739ba208a1224b35e6e2ad5336774f
 
 interface ReadingList {
   id: string
@@ -98,8 +109,11 @@ const readingLists: ReadingList[] = [
 export default function ListsView({ onBack }: ListsViewProps) {
   const [lists, setLists] = useState<ReadingList[]>(readingLists)
   const [isDialogOpen, setIsDialogOpen] = useState(false)
+<<<<<<< HEAD
   const [deleteDialogOpen, setDeleteDialogOpen] = useState(false)
   const [listToDelete, setListToDelete] = useState<ReadingList | null>(null)
+=======
+>>>>>>> 1d6221e113739ba208a1224b35e6e2ad5336774f
   const [newList, setNewList] = useState({
     title: "",
     description: "",
@@ -133,6 +147,7 @@ export default function ListsView({ onBack }: ListsViewProps) {
     })
     setIsDialogOpen(false)
   }
+<<<<<<< HEAD
 
   const handleDeleteClick = (list: ReadingList) => {
     setListToDelete(list)
@@ -151,6 +166,8 @@ export default function ListsView({ onBack }: ListsViewProps) {
     setListToDelete(null)
     setDeleteDialogOpen(false)
   }
+=======
+>>>>>>> 1d6221e113739ba208a1224b35e6e2ad5336774f
 
   const stats = [
     {
@@ -180,11 +197,17 @@ export default function ListsView({ onBack }: ListsViewProps) {
   ]
 
   return (
+<<<<<<< HEAD
     <div className="flex min-h-screen bg-gradient-to-br from-purple-50/30 to-[#D9BDF4]/10">
       <div className="sticky top-0 h-screen">
         <Sidebar />
       </div>
       <div className="flex-1 max-w-4xl mx-auto px-6 py-8 overflow-y-auto">
+=======
+    <div className="flex h-full">
+      <Sidebar />
+      <div className="flex-1 p-4">
+>>>>>>> 1d6221e113739ba208a1224b35e6e2ad5336774f
         <Button variant="ghost" onClick={onBack}>
           <ArrowLeft className="w-4 h-4 mr-2" />
           Back to Home
@@ -215,6 +238,7 @@ export default function ListsView({ onBack }: ListsViewProps) {
           <h3 className="text-lg font-semibold mb-2">Default Lists</h3>
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
             {defaultLists.map((list) => (
+<<<<<<< HEAD
               <Card key={list.id} className="group cursor-pointer p-4 hover:shadow-md transition-shadow">
                 <div className="flex items-center justify-between mb-2">
                   <div className="flex items-center gap-2">
@@ -229,10 +253,22 @@ export default function ListsView({ onBack }: ListsViewProps) {
                     <Button variant="ghost" size="sm">
                       <Eye className="w-4 h-4" />
                     </Button>
+=======
+              <Card key={list.id} className="p-4">
+                <div className="flex items-center gap-2 mb-2">
+                  <div className={`w-6 h-6 rounded-full flex items-center justify-center text-white ${list.iconColor}`}>
+                    <i className={`fas ${list.icon}`}></i>
+>>>>>>> 1d6221e113739ba208a1224b35e6e2ad5336774f
                   </div>
+                  <h4 className="font-semibold">{list.title}</h4>
                 </div>
+<<<<<<< HEAD
                 <p className="text-sm text-gray-500 mb-4">{list.description}</p>
                 <div className="flex justify-between items-center">
+=======
+                <p className="text-sm text-gray-500">{list.description}</p>
+                <div className="flex justify-between items-center mt-4">
+>>>>>>> 1d6221e113739ba208a1224b35e6e2ad5336774f
                   <span className="text-sm text-gray-600">{list.bookCount} books</span>
                   <span className="text-xs text-gray-400">Updated {list.lastUpdated}</span>
                 </div>
@@ -245,6 +281,7 @@ export default function ListsView({ onBack }: ListsViewProps) {
           <h3 className="text-lg font-semibold mb-2">Custom Lists</h3>
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
             {customLists.map((list) => (
+<<<<<<< HEAD
               <Card key={list.id} className="group cursor-pointer p-4 hover:shadow-md transition-shadow">
                 <div className="flex items-center justify-between mb-2">
                   <div className="flex items-center gap-2">
@@ -270,10 +307,22 @@ export default function ListsView({ onBack }: ListsViewProps) {
                     >
                       <Trash2 className="w-4 h-4" />
                     </Button>
+=======
+              <Card key={list.id} className="p-4">
+                <div className="flex items-center gap-2 mb-2">
+                  <div className={`w-6 h-6 rounded-full flex items-center justify-center text-white ${list.iconColor}`}>
+                    <i className={`fas ${list.icon}`}></i>
+>>>>>>> 1d6221e113739ba208a1224b35e6e2ad5336774f
                   </div>
+                  <h4 className="font-semibold">{list.title}</h4>
                 </div>
+<<<<<<< HEAD
                 <p className="text-sm text-gray-500 mb-4">{list.description}</p>
                 <div className="flex justify-between items-center">
+=======
+                <p className="text-sm text-gray-500">{list.description}</p>
+                <div className="flex justify-between items-center mt-4">
+>>>>>>> 1d6221e113739ba208a1224b35e6e2ad5336774f
                   <span className="text-sm text-gray-600">{list.bookCount} books</span>
                   <span className="text-xs text-gray-400">Updated {list.lastUpdated}</span>
                 </div>
@@ -281,7 +330,10 @@ export default function ListsView({ onBack }: ListsViewProps) {
             ))}
           </div>
         </div>
+<<<<<<< HEAD
 
+=======
+>>>>>>> 1d6221e113739ba208a1224b35e6e2ad5336774f
         {/* Create New List Dialog */}
         <Dialog open={isDialogOpen} onOpenChange={setIsDialogOpen}>
           <DialogContent className="sm:max-w-[425px]">
@@ -347,11 +399,16 @@ export default function ListsView({ onBack }: ListsViewProps) {
                 </Select>
               </div>
             </div>
+<<<<<<< HEAD
             <DialogFooter>
+=======
+            <div className="flex justify-end gap-2">
+>>>>>>> 1d6221e113739ba208a1224b35e6e2ad5336774f
               <Button variant="outline" onClick={() => setIsDialogOpen(false)}>
                 Cancel
               </Button>
               <Button onClick={handleCreateList}>Create List</Button>
+<<<<<<< HEAD
             </DialogFooter>
           </DialogContent>
         </Dialog>
@@ -377,6 +434,11 @@ export default function ListsView({ onBack }: ListsViewProps) {
             </AlertDialogFooter>
           </AlertDialogContent>
         </AlertDialog>
+=======
+            </div>
+          </DialogContent>
+        </Dialog>
+>>>>>>> 1d6221e113739ba208a1224b35e6e2ad5336774f
       </div>
     </div>
   )
